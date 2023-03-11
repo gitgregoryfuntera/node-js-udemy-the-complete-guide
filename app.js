@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
           </head>
           <body>
             <form action="/message" method="POST">
-              <input type="text" placeholder="enter message here..."/>
+              <input type="text" name="message" placeholder="enter message here..."/>
               </br>
               </br>
               <button type="submit">submit</button>
@@ -28,8 +28,18 @@ const server = http.createServer((req, res) => {
   }
 
   if (url === '/message' && method === 'POST') {
-    fs.writeFileSync('message.txt', 'DUMMY TXT')
-    res.statusCode = 302
+    const body = []
+    req.on('data', (chunk) => {
+      body.push(chunk)
+    })
+
+    req.on('end', () => {
+      const parsedBody = Buffer.concat(body).toString()
+      const message = parsedBody.split('=')[1]
+      fs.writeFileSync('message.txt', message)
+      res.statusCode = 302
+    })
+
     res.setHeader('Location', '/')
     return res.end();
   }
