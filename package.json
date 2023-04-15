@@ -1,0 +1,21 @@
+{
+  "name": "section-4-improved-development-workflow-and-debugging",
+  "version": "1.0.0",
+  "description": "Udemy Course",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide/issues"
+  },
+  "homepage": "https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide#readme"
+}
