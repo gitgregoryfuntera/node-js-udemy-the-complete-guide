@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide/issues"
   },
-  "homepage": "https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide#readme"
+  "homepage": "https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
 }
