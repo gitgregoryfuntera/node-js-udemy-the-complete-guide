@@ -15,7 +15,7 @@ app.use(`/add-users`, (req, res, next) => {
   `);
 });
 
-app.use(`/users`, (req, res, next) => {
+app.post(`/users`, (req, res, next) => {
   res.send(`<h1>Hello Users</h1>`);
 });
 
