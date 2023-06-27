@@ -4,7 +4,7 @@ const router = Router();
 
 router.get(`/add-user`, (req, res, next) => {
   res.send(`
-    <form method="POST" action="/user" >
+    <form method="POST" action="/admin/user" >
       <input type="text" name="user"/>
       <button type="submit">Submit</button>
     </form>
