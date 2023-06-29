@@ -1,18 +1,14 @@
+const path = require('path')
 const { Router } = require("express");
 
 const router = Router();
 
 router.get(`/add-user`, (req, res, next) => {
-  res.send(`
-    <form method="POST" action="/admin/user" >
-      <input type="text" name="user"/>
-      <button type="submit">Submit</button>
-    </form>
-    `);
+  res.sendFile(path.join(__dirname, '../', 'views', 'add-user.html'));
 });
 
 router.post(`/user`, (req, res, next) => {
-  res.send(`<h1>Hello User</h1>`);
+  res.sendFile(path.join(__dirname, '../', 'views', 'user.html'));
 });
 
 module.exports = router;
