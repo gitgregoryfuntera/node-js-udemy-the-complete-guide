@@ -4,25 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add User</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      .header {
+        width: 100%;
+        background: #0000ff;
+        padding: 1rem;
+      }
+
+      .header-list {
+        list-style: none;
+        display: inline-flex;
+        flex-direction: row;
+        column-gap: 1rem;
+        padding: 0;
+        font-size: 1rem;
+      }
+
+      .header-list-item > a {
+        color: #fff;
+        border: 1px solid;
+        padding: 1rem;
+        text-decoration: none;
+      }
+
+      .active-header,
+      .header-list-item > a:hover {
+        background-color: #ff1493;
+      }
+
+      .add-user-form {
+        padding: 1rem;
+      }
+
+      .form-block {
+        padding-top: 0.5rem;
+      }
+
+      .form-button {
+        background: blue;
+        font: inherit;
+        border: 2px solid #fff;
+        padding: 0.5rem;
+        color: #fff;
+      }
+
+      .form-input {
+        font: inherit;
+      }
+
+      .form-button:active,
+      .form-button:hover {
+        cursor: pointer;
+        background: #ff1493;
+      }
+    </style>
   </head>
   <body>
-    <header>
+    <header class="header">
       <nav>
-        <ul>
-          <li>
+        <ul class="header-list">
+          <li class="header-list-item">
             <a href="/">User</a>
           </li>
-          <li>
-            <a href="/admin/add-user">Add User</a>
+          <li class="header-list-item">
+            <a href="/admin/add-user" class="active-header">Add User</a>
           </li>
         </ul>
       </nav>
     </header>
     <main>
-      <form action="/admin/user" method="POST">
-        <input name="user" type="text" />
-        <button type="submit">Submit</button>
-      </form>
+      <section>
+        <div class="add-user-form">
+          <h1>Add User</h1>
+          <form action="/admin/user" method="POST">
+            <div class="form-block">
+              <input class="form-input" name="user" type="text" />
+            </div>
+            <div class="form-block">
+              <button class="form-button" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </section>
     </main>
   </body>
 </html>
