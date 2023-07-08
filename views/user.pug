@@ -5,7 +5,7 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/css/main.css")
         link(rel="stylesheet", href="/css/user.css")
-        title User
+        title #{docTitle}
     body
         header(class="header")
             nav
@@ -17,4 +17,9 @@ html(lang="en")
         main
             section
                 div(class="user-list")
-                    h1 List of Users:
+                    if users.length
+                        h1 List of Users:
+                        each item in users
+                            li #{item.user}
+                    else
+                        h1 No Users available

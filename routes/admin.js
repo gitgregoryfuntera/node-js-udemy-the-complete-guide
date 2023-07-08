@@ -13,7 +13,7 @@ router.post(`/add-user`, (req, res, next) => {
   users.push({
     user,
   })
-  res.sendFile(path.join(rootDir, 'views', 'add-user.html'));
+  res.redirect('/')
 });
 
 
