@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/main.css")
+        link(rel="stylesheet", href="/css/user.css")
+        title User
+    body
+        header(class="header")
+            nav
+                ul(class="header-list")
+                    li(class="header-list-item")
+                        a(class="active-header", href="/") User
+                    li(class="header-list-item")
+                        a(href="/admin/add-user") Add User
+        main
+            section
+                div(class="user-list")
+                    h1 List of Users:
