@@ -5,7 +5,10 @@ const router = Router();
 const users = []
 
 router.get(`/add-user`, (req, res, next) => {
-  res.sendFile(path.join(rootDir, 'views', 'add-user.html'));
+  res.render('add-user', {
+    docTitle: 'Add User'
+  })
+  // res.sendFile(path.join(rootDir, 'views', 'add-user.html'));
 });
 
 router.post(`/add-user`, (req, res, next) => {
