@@ -1,20 +1,10 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/css/main.css")
-        link(rel="stylesheet", href="/css/404.css")
-        title #{docTitle}
-    body
-        header(class="header")
-            nav
-                ul(class="header-list")
-                    li(class="header-list-item")
-                        a(href="/") User
-                    li(class="header-list-item")
-                        a(href="/admin/add-user") Add User
-        main
-            section
-                div(class="page-not-found")
-                    h1 Page Not Found - 404
+extends ./layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/404.css")
+
+block content
+    main
+        section
+            div(class="page-not-found")
+                h1 Page Not Found - 404

@@ -1,25 +1,15 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/css/main.css")
-        link(rel="stylesheet", href="/css/user.css")
-        title #{docTitle}
-    body
-        header(class="header")
-            nav
-                ul(class="header-list")
-                    li(class="header-list-item")
-                        a(class="active-header", href="/") User
-                    li(class="header-list-item")
-                        a(href="/admin/add-user") Add User
-        main
-            section
-                div(class="user-list")
-                    if users.length
-                        h1 List of Users:
-                        each item in users
-                            li #{item.user}
-                    else
-                        h1 No Users available
+extends ./layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/user.css")
+
+block content
+    main
+        section
+            div(class="user-list")
+                if users.length
+                    h1 List of Users:
+                    each item in users
+                        li #{item.user}
+                else
+                    h1 No Users available
