@@ -6,6 +6,7 @@ router.get(`/`, (req, res, next) => {
   res.render('user', {
     users: adminData.users,
     docTitle: 'User',
+    hasUsers: adminData.users.length > 0,
     path: '/'
   })
 });
