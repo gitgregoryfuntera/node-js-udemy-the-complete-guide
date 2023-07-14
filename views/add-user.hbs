@@ -1,39 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/add-user.css" />
-    <title>{{ docTitle }}</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav>
-        <ul class="header-list">
-          <li class="header-list-item">
-            <a href="/">User</a>
-          </li>
-          <li class="header-list-item">
-            <a href="/admin/add-user" class="active-header">Add User</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section>
-        <div class="add-user-form">
-          <h1>Add User</h1>
-          <form action="/admin/add-user" method="POST">
-            <div class="form-block">
-              <input class="form-input" name="user" type="text" />
-            </div>
-            <div class="form-block">
-              <button class="form-button" type="submit">Submit</button>
-            </div>
-          </form>
+<main>
+  <section>
+    <div class="add-user-form">
+      <h1>Add User</h1>
+      <form action="/admin/add-user" method="POST">
+        <div class="form-block">
+          <input class="form-input" name="user" type="text" />
         </div>
-      </section>
-    </main>
-  </body>
-</html>
+        <div class="form-block">
+          <button class="form-button" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

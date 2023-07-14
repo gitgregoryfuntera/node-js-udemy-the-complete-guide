@@ -8,7 +8,11 @@ const PORT = 8080;
 
 const app = express();
 
-app.engine('hbs', handlebars())
+app.engine('hbs', handlebars({
+  layoutsDir: 'views/layouts/',
+  defaultLayout: 'main-layout',
+  extname: 'hbs'
+}))
 app.set('view engine', 'hbs')
 // app.set('view engine', 'pug')
 app.set('views', 'views')

@@ -7,7 +7,8 @@ const users = []
 router.get(`/add-user`, (req, res, next) => {
   res.render('add-user', {
     docTitle: 'Add User',
-    path: '/admin/add-user'
+    path: '/admin/add-user',
+    addUserPath: true
   })
   // res.sendFile(path.join(rootDir, 'views', 'add-user.html'));
 });

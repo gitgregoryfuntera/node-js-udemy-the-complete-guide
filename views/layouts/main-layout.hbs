@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ docTitle }}</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    {{#if userPath}}
+    <link rel="stylesheet" href="/css/user.css">
+    {{/if}}
+    {{#if addUserPath}}
+    <link rel="stylesheet" href="/css/add-user.css" />
+    {{/if}}
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <ul class="header-list">
+          <li class="header-list-item">
+            <a href="/" class="{{#if userPath}}active-header{{/if}}">User</a>
+          </li>
+          <li class="header-list-item">
+            <a href="/admin/add-user" class="{{#if addUserPath}}active-header{{/if}}">Add User</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    {{{ body }}}
+  </body>
+</html>
