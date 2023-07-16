@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/main.css" />
+<%- include('includes/head') %>
     <link rel="stylesheet" href="/css/user.css" />
     <title>User</title>
   </head>
   <body>
-    <header class="header">
-      <nav>
-        <ul class="header-list">
-          <li class="header-list-item">
-            <a class="active-header" href="/">User</a>
-          </li>
-          <li class="header-list-item">
-            <a href="/admin/add-user">Add User</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <%- include('includes/navigation') %>
     <main>
       <section>
         <div class="user-list">
@@ -33,5 +17,4 @@
         </div>
       </section>
     </main>
-  </body>
-</html>
+  <%- include('includes/end')%>
