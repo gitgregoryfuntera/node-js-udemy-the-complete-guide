@@ -3,7 +3,6 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
-const handlebars = require('express-handlebars')
 const PORT = 8080;
 
 const app = express();
