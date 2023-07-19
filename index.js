@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
+const notFoundController = require('./controllers/error-controller')
 const PORT = 8080;
 
 const app = express();
@@ -18,12 +19,7 @@ app.use(userRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use((req, res, next) => {
-  res.status(404).render('404', {
-    docTitle: 'Page Not Found',
-    path: '/404'
-  })
-});
+app.use(notFoundController.getNotFound);
 
 app.listen(PORT, () => {
   console.log(`App is listening to PORT: ${PORT}`);
