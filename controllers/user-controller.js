@@ -1,6 +1,7 @@
-const users = [];
+const User = require('../models/user-model')
 
 const getUsers = (req, res, next) => {
+  const users = User.fetchAll()
   res.render("user", {
     users: users,
     docTitle: "Users",
@@ -22,7 +23,8 @@ const postAddUser = (req, res, next) => {
   const {
     body: { user },
   } = req;
-  users.push({ user });
+  const userModel = new User(user)
+  userModel.save()
   res.redirect("/");
 };
 
