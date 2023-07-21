@@ -8,31 +8,26 @@ class User {
     this.user = user;
   }
 
-  save() {
+  async save() {
     let users = [];
-    fs.readFile(filePath, (err, file) => {
-      try {
-        users = JSON.parse(file) || [];
-        users.push(this);
-        fs.writeFile(filePath, JSON.stringify(users), (err) =>
-          console.log(err)
-        );
-      } catch (err) {
-        users.push(this);
-        fs.writeFile(filePath, JSON.stringify(users), (err) =>
-          console.log(err)
-        );
-      }
-    });
+    try {
+      const data = await fs.promises.readFile(filePath, "utf-8");
+      users = JSON.parse(data) || [];
+      users.push(this)
+      fs.writeFile(filePath, JSON.stringify(users), (err) => console.log(err));
+    } catch (e) {
+      users.push(this);
+      fs.writeFile(filePath, JSON.stringify(users), (err) => console.log(err));
+    }
   }
 
-  static async fetchAll () {
+  static async fetchAll() {
     try {
-      const data = await fs.promises.readFile(filePath, 'utf-8')
-      return JSON.parse(data) || []
-    } catch(e) {
-      return []
-    } 
+      const data = await fs.promises.readFile(filePath, "utf-8");
+      return JSON.parse(data) || [];
+    } catch (e) {
+      return [];
+    }
   }
 }
 

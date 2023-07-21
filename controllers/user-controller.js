@@ -19,7 +19,7 @@ const getAddUser = (req, res, next) => {
   });
 };
 
-const postAddUser = (req, res, next) => {
+const postAddUser = async (req, res, next) => {
   const {
     body: { user },
   } = req;
