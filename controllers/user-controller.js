@@ -1,7 +1,7 @@
 const User = require('../models/user-model')
 
-const getUsers = (req, res, next) => {
-  const users = User.fetchAll()
+const getUsers = async (req, res, next) => {
+  const users = await User.fetchAll()
   res.render("user", {
     users: users,
     docTitle: "Users",
