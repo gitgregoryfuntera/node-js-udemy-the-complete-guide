@@ -1,0 +1,20 @@
+<%- include('includes/head') %>
+    <link rel="stylesheet" href="/css/user.css" />
+    <title>User</title>
+  </head>
+  <body>
+    <%- include('includes/navigation') %>
+    <main>
+      <section>
+        <div class="user-list">
+          <% if(users.length > 0) {%>
+          <h1>List of users...</h1>
+          <% users.forEach(item => { %>
+          <li><%= item.user %></li>
+          <% }) %> <% } %> <% if(users.length === 0) {%>
+          <h1>No Users available</h1>
+          <% } %>
+        </div>
+      </section>
+    </main>
+  <%- include('includes/end')%>
