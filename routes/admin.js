@@ -1,28 +1,13 @@
-const path = require('path')
 const { Router } = require("express");
-const rootDir = require('../util/path')
 const router = Router();
-const users = []
+const userController = require('../controllers/user-controller')
 
-router.get(`/add-user`, (req, res, next) => {
-  res.render('admin/add-user', {
-    docTitle: 'Add User',
-    path: '/admin/add-user',
-    addUserPath: true
-  })
-  // res.sendFile(path.join(rootDir, 'views', 'add-user.html'));
-});
+router.get(`/add-user`, userController.getAddUser);
 
-router.post(`/add-user`, (req, res, next) => {
-  const { body: { user } } = req
-  users.push({
-    user,
-  })
-  res.redirect('/')
-});
+router.post(`/add-user`, userController.postAddUser);
 
+router.get(`/edit-user`, userController.getEditUser);
 
-module.exports = {
-  router,
-  users
-}
+router.get(`/user-list`, userController.getUserList);
+
+module.exports = { router }
