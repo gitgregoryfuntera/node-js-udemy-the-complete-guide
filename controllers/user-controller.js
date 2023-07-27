@@ -36,9 +36,9 @@ const getUserList = async (req, res, next) => {
 
 const postAddUser = async (req, res, next) => {
   const {
-    body: { user },
+    body: { user, title, age },
   } = req;
-  const userModel = new User(user);
+  const userModel = new User(user, title, age);
   userModel.save();
   res.redirect("/");
 };

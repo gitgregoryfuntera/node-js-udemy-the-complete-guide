@@ -4,8 +4,10 @@ const pathUtils = require("../util/path");
 const filePath = path.join(pathUtils, "data", "users.json");
 
 class User {
-  constructor(user) {
+  constructor(user, title, age) {
     this.user = user;
+    this.title = title;
+    this.age = age;
   }
 
   async save() {
