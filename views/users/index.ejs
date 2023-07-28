@@ -1,20 +1,32 @@
 <%- include('../includes/head') %>
-    <link rel="stylesheet" href="/css/user.css" />
-    <title>User</title>
-  </head>
-  <body>
-    <%- include('../includes/navigation') %>
-    <main>
-      <section>
-        <div class="user-list">
-          <% if(users.length > 0) {%>
-          <h1>List of users...</h1>
-          <% users.forEach(item => { %>
-          <li><%= item.user %></li>
-          <% }) %> <% } %> <% if(users.length === 0) {%>
-          <h1>No Users available</h1>
-          <% } %>
-        </div>
-      </section>
-    </main>
+<link rel="stylesheet" href="/css/user.css" />
+<title><%= docTitle %></title>
+</head>
+
+<body>
+  <%- include('../includes/navigation') %>
+  <main>
+    <section>
+      <div class="user-list">
+        <% if(users.length> 0) {%>
+        <h1>List of users...</h1>
+        <ul class="list-container">
+          <% users.forEach(item=> { %>
+          <li>
+            <div>Name: <%= item.user %>
+            </div>
+            <div>Title: <%= item.title %>
+            </div>
+            <div>Age: <%= item.age %>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+        <% } %>
+        <% if(users.length===0) {%>
+        <h1>No Users available</h1>
+        <% } %>
+      </div>
+    </section>
+  </main>
   <%- include('../includes/end')%>
