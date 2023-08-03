@@ -13,7 +13,8 @@ const getUsers = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   const { params: { userId } } = req
-  console.log("🚀 ~ file: user-controller.js:16 ~ getUser ~ userId:", userId);
+  const user = await User.fetchById(userId)
+  console.log("🚀 ~ file: user-controller.js:18 ~ getUser ~ user:", user);
   res.redirect('/')
 }
 
