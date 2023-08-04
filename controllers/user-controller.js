@@ -12,11 +12,16 @@ const getUsers = async (req, res, next) => {
 };
 
 const getUser = async (req, res, next) => {
-  const { params: { userId } } = req
-  const user = await User.fetchById(userId)
-  console.log("🚀 ~ file: user-controller.js:18 ~ getUser ~ user:", user);
-  res.redirect('/')
-}
+  const {
+    params: { userId },
+  } = req;
+  const userData = await User.fetchById(userId);
+  res.render("users/user-details", {
+    docTitle: `${userData.user}`,
+    user: userData,
+    path: `/users/user-details`
+  });
+};
 
 const getAddUser = (req, res, next) => {
   res.render("admin/add-user", {
