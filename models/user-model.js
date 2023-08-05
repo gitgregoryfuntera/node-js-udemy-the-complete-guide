@@ -12,7 +12,7 @@ class User {
 
   async save() {
     let users = [];
-    this.id = new Date().getTime().toString()
+    this.id = new Date().getTime().toString();
     try {
       const data = await fs.promises.readFile(filePath, "utf-8");
       users = JSON.parse(data) || [];
@@ -36,10 +36,10 @@ class User {
   static async fetchById(id) {
     try {
       const data = await fs.promises.readFile(filePath, "utf-8");
-      const parsedData = JSON.parse(data) || []
-      return parsedData.find(d => d.id === id)
-    } catch(e) {
-      return null
+      const parsedData = JSON.parse(data) || [];
+      return parsedData.find((d) => d.id === id);
+    } catch (e) {
+      return null;
     }
   }
 }
