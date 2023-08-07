@@ -6,7 +6,7 @@ router.get(`/add-user`, userController.getAddUser);
 
 router.post(`/add-user`, userController.postAddUser);
 
-router.get(`/edit-user`, userController.getEditUser);
+router.get(`/edit-user/:userId`, userController.getEditUser);
 
 router.get(`/user-list`, userController.getUserList);
 
