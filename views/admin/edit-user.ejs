@@ -10,13 +10,13 @@
           <h1>Edit User</h1>
           <form action="/admin/edit-user" method="POST">
             <div class="form-block">
-              <input class="form-input" name="user" type="text" placeholder="Enter name"/>
+              <input class="form-input" name="user" type="text" placeholder="Enter name" value="<%= user.user %>"/>
             </div>
             <div class="form-block">
-              <input class="form-input" name="title" type="text" placeholder="Enter title"/>
+              <input class="form-input" name="title" type="text" placeholder="Enter title" value="<%= user.title %>"/>
             </div>
             <div class="form-block">
-              <input class="form-input" name="age" type="number" placeholder="Enter age"/>
+              <input class="form-input" name="age" type="number" placeholder="Enter age" value="<%= user.age %>"/>
             </div>
             <div class="form-block">
               <button class="form-button" type="submit">EDIT</button>

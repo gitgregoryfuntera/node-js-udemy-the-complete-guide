@@ -30,10 +30,15 @@ const getAddUser = (req, res, next) => {
   });
 };
 
-const getEditUser = (req, res, next) => {
+const getEditUser = async (req, res, next) => {
+  const {
+    params: { userId },
+  } = req;
+  const userData = await User.fetchById(userId);
   res.render("admin/edit-user", {
     docTitle: "Edit User",
     path: "/admin/edit-user",
+    user: userData,
   });
 };
 
