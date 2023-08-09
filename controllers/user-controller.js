@@ -42,6 +42,11 @@ const getEditUser = async (req, res, next) => {
   });
 };
 
+const postEditUser = async (req, res, next) => {
+
+};
+
+
 const getUserList = async (req, res, next) => {
   const users = await User.fetchAll();
   res.render("admin/user-list", {
@@ -66,5 +71,6 @@ module.exports = {
   getUsers,
   getUser,
   getEditUser,
+  postEditUser,
   getUserList,
 };
