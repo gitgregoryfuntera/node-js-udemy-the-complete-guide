@@ -43,7 +43,15 @@ const getEditUser = async (req, res, next) => {
 };
 
 const postEditUser = async (req, res, next) => {
-
+  const { body: {
+    id,
+    user,
+    title,
+    age
+  } } = req
+  const userModel = new User(id, user, title, age);
+  await userModel.update()
+  res.redirect("/")
 };
 
 
@@ -60,8 +68,8 @@ const postAddUser = async (req, res, next) => {
   const {
     body: { user, title, age },
   } = req;
-  const userModel = new User(user, title, age);
-  userModel.save();
+  const userModel = new User(null, user, title, age);
+  await userModel.save();
   res.redirect("/");
 };
 

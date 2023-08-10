@@ -9,6 +9,7 @@
         <div class="add-user-form">
           <h1>Edit User</h1>
           <form action="/admin/edit-user" method="POST">
+            <input class="form-input" name="id" type="hidden" value="<%= user.id %>"/>
             <div class="form-block">
               <input class="form-input" name="user" type="text" placeholder="Enter name" value="<%= user.user %>"/>
             </div>
