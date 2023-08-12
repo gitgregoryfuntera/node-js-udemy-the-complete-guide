@@ -22,10 +22,13 @@
             <div class="form-block">
               <button class="form-button" type="submit">EDIT</button>
             </div>
-            <div class="form-block">
-              <button class="form-button" type="submit">DELETE</button>
-            </div>
           </form>
+          <div class="form-block">
+            <form action="/admin/delete-user" method="POST">
+              <input class="form-input" name="id" type="hidden" value="<%= user.id %>"/>
+              <button class="form-button" type="submit">DELETE</button>
+            </form>
+          </div>
         </div>
       </section>
     </main>

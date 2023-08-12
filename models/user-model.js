@@ -63,6 +63,17 @@ class User {
       return null;
     }
   }
+
+  static async deleteById(id) {
+    try {
+      const data = await fs.promises.readFile(filePath, "utf-8");
+      const parsedData = JSON.parse(data) || [];
+      const modifiedData = parsedData.filter((user) => user.id !== id)
+      fs.writeFile(filePath, JSON.stringify(modifiedData), (err) => console.log(err));
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = User;

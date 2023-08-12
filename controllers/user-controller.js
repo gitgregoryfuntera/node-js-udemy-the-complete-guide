@@ -19,7 +19,7 @@ const getUser = async (req, res, next) => {
   res.render("users/user-details", {
     docTitle: `${userData.user}`,
     user: userData,
-    path: `/users/user-details`
+    path: `/users/user-details`,
   });
 };
 
@@ -43,17 +43,21 @@ const getEditUser = async (req, res, next) => {
 };
 
 const postEditUser = async (req, res, next) => {
-  const { body: {
-    id,
-    user,
-    title,
-    age
-  } } = req
+  const {
+    body: { id, user, title, age },
+  } = req;
   const userModel = new User(id, user, title, age);
-  await userModel.update()
-  res.redirect("/")
+  await userModel.update();
+  res.redirect("/");
 };
 
+const postDeleteUser = async (req, res, next) => {
+  const {
+    body: { id },
+  } = req;
+  await User.deleteById(id)
+  res.redirect("/");
+};
 
 const getUserList = async (req, res, next) => {
   const users = await User.fetchAll();
@@ -76,6 +80,7 @@ const postAddUser = async (req, res, next) => {
 module.exports = {
   getAddUser,
   postAddUser,
+  postDeleteUser,
   getUsers,
   getUser,
   getEditUser,
