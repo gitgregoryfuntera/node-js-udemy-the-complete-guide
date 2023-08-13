@@ -4,6 +4,20 @@ const pathUtils = require("../util/path");
 const filePath = path.join(pathUtils, "data", "users-work-orders.json");
 
 class WorkOrder {
+  static async deleteWorkOrderByUserId({ userId }) {
+    try {
+      const data = await fs.promises.readFile(filePath, "utf-8");
+      const userWorkOrders = JSON.parse(data) || [];
+      const filteredUserWorkOrders = userWorkOrders?.filter(
+        (workOrder) => workOrder.userId !== userId
+      );
+      fs.writeFile(filePath, JSON.stringify(filteredUserWorkOrders), (err) => {
+        throw Error(err);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
   static async saveUsersWorkOrder({ workOrderId, userId, workOrderName }) {
     let usersWorkOrders = [];
     try {

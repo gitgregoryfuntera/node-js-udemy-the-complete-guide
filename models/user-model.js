@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const pathUtils = require("../util/path");
+const WorkOrder = require("./work-order-model");
 const filePath = path.join(pathUtils, "data", "users.json");
 
 class User {
@@ -67,9 +68,12 @@ class User {
   static async deleteById(id) {
     try {
       const data = await fs.promises.readFile(filePath, "utf-8");
-      const parsedData = JSON.parse(data) || [];
-      const modifiedData = parsedData.filter((user) => user.id !== id)
+      const users = JSON.parse(data) || [];
+      const modifiedData = users.filter((user) => user.id !== id)
       fs.writeFile(filePath, JSON.stringify(modifiedData), (err) => console.log(err));
+      await WorkOrder.deleteWorkOrderByUserId({
+        userId: id
+      }) // delete associated work order of the user
     } catch (e) {
       console.log(e)
     }
