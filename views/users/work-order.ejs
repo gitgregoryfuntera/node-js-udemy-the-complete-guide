@@ -9,6 +9,19 @@
     <section>
       <div class="work-order-list">
         <h1>Work Orders</h1>
+        <% if (workOrders.length > 0) { %>
+          <ul>
+            <% workOrders.forEach(workOrder => {%>
+              <li>
+                <div>Work Order User: <%= workOrder.user %></div>
+                <div>Work Order Name: <%= workOrder.workOrderName %></div>
+                <div>Work Order Dispatch Count: <%= workOrder.dispatchCount %></div>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <h1>No Work Order Available...</h1>
+        <% } %>
       </div>
     </section>
   </main>
