@@ -9,18 +9,24 @@
     <section>
       <div class="work-order-list">
         <h1>Work Orders</h1>
-        <% if (workOrders.length > 0) { %>
+        <% if (workOrders?.length > 0) { %>
           <ul>
-            <% workOrders.forEach(workOrder => {%>
+            <% workOrders?.forEach(workOrder => {%>
               <li>
                 <div>Work Order User: <%= workOrder.user %></div>
                 <div>Work Order Name: <%= workOrder.workOrderName %></div>
                 <div>Work Order Dispatch Count: <%= workOrder.dispatchCount %></div>
+                <div>
+                  <form action="/delete/work-order" method="POST">
+                    <input type="hidden" name="work_order_id" value="<%= workOrder.workOrderId %>"/>
+                    <button type="submit">Delete Work Order</button>
+                  </form>
+                </div>
               </li>
             <% }) %>
           </ul>
         <% } else { %>
-          <h1>No Work Order Available...</h1>
+          <h4>No Work Order Available...</h4>
         <% } %>
       </div>
     </section>

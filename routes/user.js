@@ -8,6 +8,7 @@ router.get("/", userController.getUsers);
 router.get("/task", taskController.getTasks);
 router.get("/work-order", workOrderController.getWorkOrders);
 router.post("/work-order", workOrderController.postAddWorkOrder);
+router.post("/delete/work-order", workOrderController.postDeleteWorkOrder);
 router.get("/users/:userId", userController.getUser)
 router.get("/users/:userId", userController.getUser)
 
