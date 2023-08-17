@@ -12,3 +12,4 @@
 - [section 6: Working with dynamic content and adding templating engine](https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide/tree/section-6-working-with-dynamic-content-adding-templating-engine)
 - [section 7: The model view controller](https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide/tree/section-7-the-model-view-controller)
 - [section 8: Optional enhancing the app ](https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide/tree/section-8-enhancing-the-app)
+- [section 9: Dynamic routes and advanced models ](https://github.com/gitgregoryfuntera/node-js-udemy-the-complete-guide/tree/section-9-dynamic-routes-and-advanced-models)
