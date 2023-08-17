@@ -1,0 +1,30 @@
+<%- include('../includes/head') %>
+<link rel="stylesheet" href="/css/user.css" />
+<title><%= docTitle %></title>
+</head>
+
+<body>
+  <%- include('../includes/navigation') %>
+  <main>
+    <section>
+      <div class="user-detail-container">
+        <div>
+            <p>ID: <%= user.id %></p>
+        </div>
+        <div>
+            <p>Name: <%= user.user %></p>
+        </div>
+        <div>
+            <p>Title: <%= user.title %></p>
+        </div>
+        <div>
+            <p>Age: <%= user.age %></p>
+        </div>
+        <div>
+          <h4>Work Orders: </h4>
+          <%- include('../includes/user-work-orders') %>
+        </div>
+      </div>
+    </section>
+  </main>
+  <%- include('../includes/end')%>

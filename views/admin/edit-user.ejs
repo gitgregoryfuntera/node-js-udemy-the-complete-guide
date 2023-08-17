@@ -1,0 +1,35 @@
+<%- include('../includes/head') %>
+    <link rel="stylesheet" href="/css/add-user.css" />
+    <title><%= docTitle %></title>
+  </head>
+  <body>
+    <%- include('../includes/navigation') %>
+    <main>
+      <section>
+        <div class="add-user-form">
+          <h1>Edit User</h1>
+          <form action="/admin/edit-user" method="POST">
+            <input class="form-input" name="id" type="hidden" value="<%= user.id %>"/>
+            <div class="form-block">
+              <input class="form-input" name="user" type="text" placeholder="Enter name" value="<%= user.user %>"/>
+            </div>
+            <div class="form-block">
+              <input class="form-input" name="title" type="text" placeholder="Enter title" value="<%= user.title %>"/>
+            </div>
+            <div class="form-block">
+              <input class="form-input" name="age" type="number" placeholder="Enter age" value="<%= user.age %>"/>
+            </div>
+            <div class="form-block">
+              <button class="form-button" type="submit">EDIT</button>
+            </div>
+          </form>
+          <div class="form-block">
+            <form action="/admin/delete-user" method="POST">
+              <input class="form-input" name="id" type="hidden" value="<%= user.id %>"/>
+              <button class="form-button" type="submit">DELETE</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  <%- include('../includes/end')%>

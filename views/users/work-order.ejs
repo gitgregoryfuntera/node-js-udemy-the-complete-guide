@@ -1,0 +1,34 @@
+<%- include('../includes/head') %>
+<link rel="stylesheet" href="/css/user.css" />
+<title><%= docTitle %></title>
+</head>
+
+<body>
+  <%- include('../includes/navigation') %>
+  <main>
+    <section>
+      <div class="work-order-list">
+        <h1>Work Orders</h1>
+        <% if (workOrders?.length > 0) { %>
+          <ul>
+            <% workOrders?.forEach(workOrder => {%>
+              <li>
+                <div>Work Order User: <%= workOrder.user %></div>
+                <div>Work Order Name: <%= workOrder.workOrderName %></div>
+                <div>Work Order Dispatch Count: <%= workOrder.dispatchCount %></div>
+                <div>
+                  <form action="/delete/work-order" method="POST">
+                    <input type="hidden" name="work_order_id" value="<%= workOrder.workOrderId %>"/>
+                    <button type="submit">Delete Work Order</button>
+                  </form>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <h4>No Work Order Available...</h4>
+        <% } %>
+      </div>
+    </section>
+  </main>
+  <%- include('../includes/end')%>
