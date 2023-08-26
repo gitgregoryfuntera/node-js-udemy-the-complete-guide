@@ -3,7 +3,7 @@ const path = require("path");
 const pathUtils = require("../util/path");
 const WorkOrder = require("./work-order-model");
 const filePath = path.join(pathUtils, "data", "users.json");
-
+const db = require('../util/database')
 class User {
   constructor(id, user, title, age) {
     this.id = id;
@@ -48,8 +48,8 @@ class User {
 
   static async fetchAll() {
     try {
-      const data = await fs.promises.readFile(filePath, "utf-8");
-      return JSON.parse(data) || [];
+      const [data, metadata] = await db.execute('SELECT * FROM users');
+      return data;
     } catch (e) {
       return [];
     }

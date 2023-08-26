@@ -3,16 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
-const db = require('./util/database')
-
 const PORT = 8080;
-
-db.execute('SELECT * FROM users').then((row) => {
-  console.log(row)
-}).catch(error => {
-  console.log(error)
-});
-
 
 const app = express();
 
