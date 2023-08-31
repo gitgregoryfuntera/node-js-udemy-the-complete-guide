@@ -1,0 +1,38 @@
+<%- include('../includes/head') %>
+<link rel="stylesheet" href="/css/user.css" />
+<title><%= docTitle %></title>
+</head>
+
+<body>
+  <%- include('../includes/navigation') %>
+  <main>
+    <section>
+      <div class="user-list">
+        <% if(users.length> 0) {%>
+        <h1>List of users...</h1>
+        <ul class="list-container">
+          <% users.forEach(item=> { %>
+          <li>
+            <div>Name: <%= item.user %>
+            </div>
+            <div>Title: <%= item.title %>
+            </div>
+            <div>Age: <%= item.age %>
+            </div>
+            <div>
+              <a href="/user-detail/<%= item.id %>">Details</a> 
+            </div>
+            <div>
+              <a href="/admin/edit-user/<%= item.id %>">Edit</a> 
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+        <% } %>
+        <% if(users.length===0) {%>
+        <h1>No Users available</h1>
+        <% } %>
+      </div>
+    </section>
+  </main>
+  <%- include('../includes/end')%>

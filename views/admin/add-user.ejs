@@ -1,0 +1,28 @@
+<%- include('../includes/head') %>
+    <link rel="stylesheet" href="/css/add-user.css" />
+    <title><%= docTitle %></title>
+  </head>
+  <body>
+    <%- include('../includes/navigation') %>
+    <main>
+      <section>
+        <div class="add-user-form">
+          <h1>Add User</h1>
+          <form action="/admin/add-user" method="POST">
+            <div class="form-block">
+              <input class="form-input" name="user" type="text" placeholder="Enter name"/>
+            </div>
+            <div class="form-block">
+              <input class="form-input" name="title" type="text" placeholder="Enter title"/>
+            </div>
+            <div class="form-block">
+              <input class="form-input" name="age" type="number" placeholder="Enter age"/>
+            </div>
+            <div class="form-block">
+              <button class="form-button" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  <%- include('../includes/end')%>
