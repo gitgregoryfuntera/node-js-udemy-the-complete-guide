@@ -3,6 +3,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
+const { sequelize } = require("./util/database")
+
 const PORT = 8080;
 
 const app = express();
@@ -25,6 +27,13 @@ app.use((req, res, next) => {
   })
 });
 
-app.listen(PORT, () => {
-  console.log(`App is listening to PORT: ${PORT}`);
-});
+sequelize.sync().then(result => {
+  console.log("🚀 ~ file: index.js:31 ~ sequelize.sync ~ result:", result);
+  app.listen(PORT, () => {
+    console.log(`App is listening to PORT: ${PORT}`);
+  });
+}).catch(e => {
+  console.log("🚀 ~ file: index.js:36 ~ sequelize.sync ~ e:", e);
+})
+
+
