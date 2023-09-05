@@ -98,6 +98,10 @@ const User = sequelize.define("user", {
     primaryKey: true,
     allowNull: false,
   },
+  user: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,

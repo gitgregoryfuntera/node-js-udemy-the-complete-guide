@@ -28,7 +28,6 @@ app.use((req, res, next) => {
 });
 
 sequelize.sync().then(result => {
-  console.log("🚀 ~ file: index.js:31 ~ sequelize.sync ~ result:", result);
   app.listen(PORT, () => {
     console.log(`App is listening to PORT: ${PORT}`);
   });

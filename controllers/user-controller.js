@@ -1,7 +1,8 @@
 const User = require("../models/user-model");
 
 const getUsers = async (req, res, next) => {
-  const users = await User.fetchAll();
+  // const users = await User.fetchAll();
+  const users = []
   res.render("users/index", {
     users: users,
     docTitle: "Users",
@@ -72,9 +73,16 @@ const postAddUser = async (req, res, next) => {
   const {
     body: { user, title, age },
   } = req;
-  const userModel = new User(null, user, title, age);
-  await userModel.save();
-  res.redirect("/");
+  try {
+    await User.create({
+      user,
+      title,
+      age,
+    })
+    res.redirect("/");
+  } catch(e) {
+    console.log("🚀 ~ file: user-controller.js:83 ~ postAddUser ~ e:", e);
+  }
 };
 
 module.exports = {
