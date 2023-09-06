@@ -1,15 +1,25 @@
 const User = require("../models/user-model");
 
 const getUsers = async (req, res, next) => {
-  // const users = await User.fetchAll();
-  const users = []
-  res.render("users/index", {
-    users: users,
-    docTitle: "Users",
-    hasUsers: users.length > 0,
-    path: "/",
-    userPath: true,
-  });
+  try {
+    const results = await User.findAll();
+    res.render("users/index", {
+      users: results,
+      docTitle: "Users",
+      hasUsers: results.length > 0,
+      path: "/",
+      userPath: true,
+    });
+  } catch (e) {
+    console.log("🚀 ~ file: user-controller.js:8 ~ getUsers ~ e:", e);
+    res.render("users/index", {
+      users: [],
+      docTitle: "Users",
+      hasUsers: false,
+      path: "/",
+      userPath: true,
+    });
+  }
 };
 
 const getUser = async (req, res, next) => {
@@ -56,7 +66,7 @@ const postDeleteUser = async (req, res, next) => {
   const {
     body: { id },
   } = req;
-  await User.deleteById(id)
+  await User.deleteById(id);
   res.redirect("/");
 };
 
@@ -78,9 +88,9 @@ const postAddUser = async (req, res, next) => {
       user,
       title,
       age,
-    })
+    });
     res.redirect("/");
-  } catch(e) {
+  } catch (e) {
     console.log("🚀 ~ file: user-controller.js:83 ~ postAddUser ~ e:", e);
   }
 };
