@@ -26,12 +26,16 @@ const getUser = async (req, res, next) => {
   const {
     params: { userId },
   } = req;
-  const userData = await User.fetchById(userId);
-  res.render("users/user-details", {
-    docTitle: `${userData.user}`,
-    user: userData,
-    path: `/users/user-details`,
-  });
+  try {
+    const result = await User.findByPk(userId);
+    res.render("users/user-details", {
+      docTitle: `${result?.user}`,
+      user: result,
+      path: `/users/user-details`,
+    });
+  } catch (e) {
+    console.log("🚀 ~ file: user-controller.js:38 ~ getUser ~ e:", e);
+  }
 };
 
 const getAddUser = (req, res, next) => {
