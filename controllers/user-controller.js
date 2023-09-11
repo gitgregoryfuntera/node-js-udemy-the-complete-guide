@@ -49,7 +49,7 @@ const getEditUser = async (req, res, next) => {
   const {
     params: { userId },
   } = req;
-  const userData = await User.fetchById(userId);
+  const userData = await User.findByPk(userId);
   res.render("admin/edit-user", {
     docTitle: "Edit User",
     path: "/admin/edit-user",
@@ -61,9 +61,23 @@ const postEditUser = async (req, res, next) => {
   const {
     body: { id, user, title, age },
   } = req;
-  const userModel = new User(id, user, title, age);
-  await userModel.update();
-  res.redirect("/");
+  try {
+    const userVal = await User.findByPk(id)
+    if (userVal) {
+      userVal.user = user
+      userVal.title = title
+      userVal.age = age
+      const result = await userVal.save()
+      console.log("🚀 ~ file: user-controller.js:71 ~ postEditUser ~ result:", result);
+      res.redirect("/"); 
+    }
+  } catch(e) {
+    console.log("🚀 ~ file: user-controller.js:67 ~ postEditUser ~ e:", e);
+    res.redirect("/"); 
+  }
+  // const userModel = new User(id, user, title, age);
+  // await userModel.update();
+
 };
 
 const postDeleteUser = async (req, res, next) => {
