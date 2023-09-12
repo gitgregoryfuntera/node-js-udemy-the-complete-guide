@@ -75,8 +75,6 @@ const postEditUser = async (req, res, next) => {
     console.log("🚀 ~ file: user-controller.js:67 ~ postEditUser ~ e:", e);
     res.redirect("/"); 
   }
-  // const userModel = new User(id, user, title, age);
-  // await userModel.update();
 
 };
 
@@ -84,7 +82,8 @@ const postDeleteUser = async (req, res, next) => {
   const {
     body: { id },
   } = req;
-  await User.deleteById(id);
+  const user = await User.findByPk(id)
+  await user.destroy()
   res.redirect("/");
 };
 
