@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
 const { sequelize } = require("./util/database")
+const User = require('./models/user-model')
+const WorkOrder = require('./models/work-order-model')
 
 const PORT = 8080;
 
@@ -27,7 +29,13 @@ app.use((req, res, next) => {
   })
 });
 
-sequelize.sync().then(result => {
+WorkOrder.belongsToMany(User, {
+  through: 'WorkOrdersUser'
+})
+
+sequelize.sync({
+  force: true
+}).then(result => {
   app.listen(PORT, () => {
     console.log(`App is listening to PORT: ${PORT}`);
   });

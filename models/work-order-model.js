@@ -94,19 +94,14 @@ const { sequelize } = require("../util/database");
 const WorkOrder = sequelize.define("workorder", {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement,
-    primaryKey,
+    autoIncrement: true,
+    primaryKey: true,
     allowNull: false
   },
   workOrderName: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  }
-
 })
 
 module.exports = WorkOrder
