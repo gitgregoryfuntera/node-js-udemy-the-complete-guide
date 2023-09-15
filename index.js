@@ -29,13 +29,14 @@ app.use((req, res, next) => {
   })
 });
 
-WorkOrder.belongsToMany(User, {
-  through: 'WorkOrdersUser'
-})
+// WorkOrder.belongsToMany(User, {
+//   through: 'WorkOrdersUser'
+// })
 
-sequelize.sync({
-  force: true
-}).then(result => {
+User.hasOne(WorkOrder)
+WorkOrder.belongsTo(User)
+
+sequelize.sync().then(async (result) => {
   app.listen(PORT, () => {
     console.log(`App is listening to PORT: ${PORT}`);
   });
