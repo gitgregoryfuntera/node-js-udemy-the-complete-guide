@@ -29,10 +29,6 @@ app.use((req, res, next) => {
   })
 });
 
-// WorkOrder.belongsToMany(User, {
-//   through: 'WorkOrdersUser'
-// })
-
 User.hasOne(WorkOrder)
 WorkOrder.belongsTo(User)
 

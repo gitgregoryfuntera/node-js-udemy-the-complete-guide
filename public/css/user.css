@@ -1,15 +1,24 @@
 .work-order-list {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .user-list {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .list-container li {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .user-detail-container {
-    padding: 1rem;
+  padding: 1rem;
+}
+
+.work-order-lookup-list-item {
+  text-transform: capitalize;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1rem;
 }

@@ -1,29 +1,15 @@
 <ul>
-  <li>
-    Repair
-    <form method="POST" action="/work-order">
-      <input name="work_order_id" value="1" type="hidden" />
-      <input name="work_order_name" value="Repair" type="hidden" />
-      <input name="user_id" value="<%= user.id %>" type="hidden" />
-      <button type="submit">Add Work Order</button>
-    </form>
-  </li>
-  <li>
-    Build
-    <form method="POST" action="/work-order">
-      <input name="work_order_id" value="2" type="hidden" />
-      <input name="work_order_name" value="Build" type="hidden" />
-      <input name="user_id" value="<%= user.id %>" type="hidden" />
-      <button type="submit">Add Work Order</button>
-    </form>
-  </li>
-  <li>
-    Enhance
-    <form method="POST" action="/work-order">
-      <input name="work_order_id" value="3" type="hidden" />
-      <input name="work_order_name" value="Enhance" type="hidden" />
-      <input name="user_id" value="<%= user.id %>" type="hidden" />
-      <button type="submit">Add Work Order</button>
-    </form>
-  </li>
+  <% if(workOrderLookups.length > 0) {%>
+    <% workOrderLookups.forEach(lookup => {%>
+      <li class="work-order-lookup-list-item">
+        <%= lookup.name %>
+        <form method="POST" action="/work-order">
+          <input name="work_order_id" value="<%= lookup.id %>" type="hidden" />
+          <input name="work_order_name" value="<%= lookup.name %>" type="hidden" />
+          <input name="user_id" value="<%= user.id %>" type="hidden" />
+          <button type="submit">Add Work Order</button>
+        </form>
+      </li>
+    <% }) %>
+  <% } %> 
 </ul>
