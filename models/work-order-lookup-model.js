@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 
 const { sequelize } = require("../util/database");
 
-const WorkOrder = sequelize.define("workorderlookups", {
+const WorkOrderLookups = sequelize.define("workorderlookups", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -16,4 +16,4 @@ const WorkOrder = sequelize.define("workorderlookups", {
   },
 })
 
-module.exports = WorkOrder
+module.exports = WorkOrderLookups

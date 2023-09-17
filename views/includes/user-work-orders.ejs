@@ -4,7 +4,7 @@
       <li class="work-order-lookup-list-item">
         <%= lookup.name %>
         <form method="POST" action="/work-order">
-          <input name="work_order_id" value="<%= lookup.id %>" type="hidden" />
+          <input name="work_order_look_up_id" value="<%= lookup.id %>" type="hidden" />
           <input name="work_order_name" value="<%= lookup.name %>" type="hidden" />
           <input name="user_id" value="<%= user.id %>" type="hidden" />
           <button type="submit">Add Work Order</button>

@@ -21,12 +21,13 @@ const getWorkOrders = async (req, res, next) => {
 
 const postAddWorkOrder = async (req, res, next) => {
   const {
-    body: { user_id, work_order_id, work_order_name },
+    body: { user_id, work_order_look_up_id, work_order_name },
   } = req;
   try {
     await WorkOrder.create({
       workOrderName: work_order_name,
-      userId: user_id
+      userId: user_id,
+      workorderlookupId: work_order_look_up_id,
     })
     res.redirect("/work-order");
   } catch(e) {

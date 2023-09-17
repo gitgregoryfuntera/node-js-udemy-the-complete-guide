@@ -6,6 +6,7 @@ const userRoutes = require("./routes/user");
 const { sequelize } = require("./util/database")
 const User = require('./models/user-model')
 const WorkOrder = require('./models/work-order-model')
+const WorkOrderLookups = require('./models/work-order-lookup-model')
 
 const PORT = 8080;
 
@@ -32,7 +33,10 @@ app.use((req, res, next) => {
 User.hasOne(WorkOrder)
 WorkOrder.belongsTo(User)
 
-sequelize.sync().then(async (result) => {
+WorkOrderLookups.hasOne(WorkOrder)
+WorkOrder.belongsTo(WorkOrderLookups)
+
+sequelize.sync().then((result) => {
   app.listen(PORT, () => {
     console.log(`App is listening to PORT: ${PORT}`);
   });
