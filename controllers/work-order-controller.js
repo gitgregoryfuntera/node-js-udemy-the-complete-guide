@@ -2,20 +2,63 @@ const User = require("../models/user-model");
 const WorkOrder = require("../models/work-order-model");
 
 const getWorkOrders = async (req, res, next) => {
-  // const workOrders = await WorkOrder.getWorkOrders();
-  // let userWorkOrders = [];
-  // for (let workOrder of workOrders) {
-  //   const userDetail = await User.fetchById(workOrder.userId);
-  //   userWorkOrders.push({
-  //     ...userDetail,
-  //     ...workOrder,
-  //   });
-  // }
-
+  const workOrders = await WorkOrder.findAll();
+  let constructedWO = [];
+  for (let workOrder of workOrders) {
+    const {
+      id,
+      workOrderName,
+      userId,
+      workorderlookupId,
+      createdAt,
+      updatedAt,
+    } = workOrder;
+    const user = await User.findByPk(userId);
+    const { user: userName, title: userTitle } = user;
+    if (constructedWO?.length === 0) {
+      constructedWO.push({
+        id,
+        userId,
+        userName,
+        userTitle,
+        workOrderName,
+        workorderlookupId,
+        workOrderDispatchCount: 1,
+        createdAt,
+        updatedAt,
+      });
+    } else {
+      const existingWorkOrder = constructedWO.find(
+        (workOrder) => workOrder.workorderlookupId === workorderlookupId && workOrder.userId === userId
+      );
+      if (existingWorkOrder) {
+        constructedWO = constructedWO.map((value) => {
+          if (value.workorderlookupId === workorderlookupId) {
+            value.workOrderDispatchCount = value.workOrderDispatchCount + 1;
+          }
+          return {
+            ...value,
+          };
+        });
+      } else {
+        constructedWO.push({
+          id,
+          userId,
+          userName,
+          userTitle,
+          workOrderName,
+          workorderlookupId,
+          workOrderDispatchCount: 1,
+          createdAt,
+          updatedAt,
+        });
+      }
+    }
+  }
   res.render("users/work-order", {
     docTitle: "Work Orders",
     path: "/work-order",
-    workOrders: [],
+    workOrders: constructedWO,
   });
 };
 
@@ -28,10 +71,13 @@ const postAddWorkOrder = async (req, res, next) => {
       workOrderName: work_order_name,
       userId: user_id,
       workorderlookupId: work_order_look_up_id,
-    })
+    });
     res.redirect("/work-order");
-  } catch(e) {
-    console.log("🚀 ~ file: work-order-controller.js:33 ~ postAddWorkOrder ~ e:", e);
+  } catch (e) {
+    console.log(
+      "🚀 ~ file: work-order-controller.js:33 ~ postAddWorkOrder ~ e:",
+      e
+    );
     res.redirect("/work-order");
   }
 };

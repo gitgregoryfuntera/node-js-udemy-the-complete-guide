@@ -13,12 +13,12 @@
           <ul>
             <% workOrders?.forEach(workOrder => {%>
               <li>
-                <div>Work Order User: <%= workOrder.user %></div>
+                <div>Work Order User: <%= workOrder.userName %></div>
                 <div>Work Order Name: <%= workOrder.workOrderName %></div>
-                <div>Work Order Dispatch Count: <%= workOrder.dispatchCount %></div>
+                <div>Work Order Dispatch Count: <%= workOrder.workOrderDispatchCount %></div>
                 <div>
                   <form action="/delete/work-order" method="POST">
-                    <input type="hidden" name="work_order_id" value="<%= workOrder.workOrderId %>"/>
+                    <input type="hidden" name="work_order_id" value="<%= workOrder.id %>"/>
                     <button type="submit">Delete Work Order</button>
                   </form>
                 </div>
