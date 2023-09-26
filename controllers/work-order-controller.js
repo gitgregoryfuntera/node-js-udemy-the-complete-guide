@@ -29,7 +29,9 @@ const getWorkOrders = async (req, res, next) => {
       });
     } else {
       const existingWorkOrder = constructedWO.find(
-        (workOrder) => workOrder.workorderlookupId === workorderlookupId && workOrder.userId === userId
+        (workOrder) =>
+          workOrder.workorderlookupId === workorderlookupId &&
+          workOrder.userId === userId
       );
       if (existingWorkOrder) {
         constructedWO = constructedWO.map((value) => {
@@ -84,12 +86,24 @@ const postAddWorkOrder = async (req, res, next) => {
 
 const postDeleteWorkOrder = async (req, res, next) => {
   const {
-    body: { work_order_id },
+    body: { work_order_user_id, work_order_lookup_id },
   } = req;
-  await WorkOrder.deleteWorkOrderById({
-    workOrderId: work_order_id,
-  });
-  res.redirect("/work-order");
+  try {
+    const userWorkOrders = await WorkOrder.findAll({
+      where: {
+        workorderlookupId: work_order_lookup_id,
+        userId: work_order_user_id,
+      },
+    });
+    await userWorkOrders[0].destroy();
+    res.redirect("/work-order");
+  } catch (e) {
+    console.log(
+      "🚀 ~ file: work-order-controller.js:99 ~ postDeleteWorkOrder ~ e:",
+      e
+    );
+    res.redirect("/work-order");
+  }
 };
 
 module.exports = {

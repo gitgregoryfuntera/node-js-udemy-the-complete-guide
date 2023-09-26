@@ -18,7 +18,8 @@
                 <div>Work Order Dispatch Count: <%= workOrder.workOrderDispatchCount %></div>
                 <div>
                   <form action="/delete/work-order" method="POST">
-                    <input type="hidden" name="work_order_id" value="<%= workOrder.id %>"/>
+                    <input type="hidden" name="work_order_user_id" value="<%= workOrder.userId %>"/>
+                    <input type="hidden" name="work_order_lookup_id" value="<%= workOrder.workorderlookupId %>"/>
                     <button type="submit">Delete Work Order</button>
                   </form>
                 </div>
