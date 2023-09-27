@@ -1,5 +1,5 @@
 const User = require("../models/user-model");
-const WorkOrderLookup = require("../models/work-order-lookup-model");
+const WorkOrderLookups = require("../models/work-order-lookup-model");
 
 const getUsers = async (req, res, next) => {
   try {
@@ -29,7 +29,8 @@ const getUser = async (req, res, next) => {
   } = req;
   try {
     const result = await User.findByPk(userId);
-    const workOrderLookups = await WorkOrderLookup.findAll()
+    console.log("🚀 ~ file: user-controller.js:32 ~ getUser ~ result:", result);
+    const workOrderLookups = await WorkOrderLookups.findAll()
     res.render("users/user-details", {
       docTitle: `${result?.user}`,
       workOrderLookups,

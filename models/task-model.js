@@ -2,17 +2,17 @@ const { DataTypes } = require("sequelize");
 
 const { sequelize } = require("../util/database");
 
-const WorkOrder = sequelize.define("workorder", {
+const Task = sequelize.define("task", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false
+    allowNull: false,
   },
-  workOrderName: {
-    type: DataTypes.STRING,
-    allowNull: false
+  workOrderDispatchCount: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
-})
+});
 
-module.exports = WorkOrder
+module.exports = Task;
