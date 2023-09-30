@@ -23,6 +23,36 @@
                     <button type="submit">Delete Work Order</button>
                   </form>
                 </div>
+                <div>
+                  <% if (workOrder?.availableTasks?.length > 0) { %>
+                    <p>Available Tasks</p>
+                    <ul>
+                      <% workOrder?.availableTasks?.forEach(task => { %>
+                        <li>Task ID: <%= task.id %></li>
+                        <div>
+                          <form action="/task/add" method="POST">
+                            <input type="hidden" name="task_id" value="<%= task.id %>"/>
+                            <input type="hidden" name="work_order_user_id" value="<%= workOrder.userId %>"/>
+                            <input type="hidden" name="work_order_lookup_id" value="<%= workOrder.workorderlookupId %>"/>
+                            <input type="hidden" name="work_order_dispatch_count" value="<%= workOrder.workOrderDispatchCount %>"/>
+                            <button type="submit">Add To Task</button>
+                          </form>
+                        </div>
+                      <% }) %>
+                    </ul>
+                  <% } else { %>
+                    <p>A task has already been associated to this user.</p>
+                    <div>
+                      <form action="/task/add" method="POST">
+                        <input type="hidden" name="task_id" value=""/>
+                        <input type="hidden" name="work_order_user_id" value="<%= workOrder.userId %>"/>
+                        <input type="hidden" name="work_order_lookup_id" value="<%= workOrder.workorderlookupId %>"/>
+                        <input type="hidden" name="work_order_dispatch_count" value="<%= workOrder.workOrderDispatchCount %>"/>
+                        <button type="submit">Add a new task</button>
+                      </form>
+                    </div>
+                  <% } %>
+                </div>
               </li>
             <% }) %>
           </ul>

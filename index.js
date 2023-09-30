@@ -8,6 +8,7 @@ const User = require("./models/user-model");
 const WorkOrder = require("./models/work-order-model");
 const WorkOrderLookups = require("./models/work-order-lookup-model");
 const Task = require("./models/task-model");
+const TaskItem = require("./models/task-item-model");
 
 const PORT = 8080;
 
@@ -37,8 +38,10 @@ WorkOrder.belongsTo(User);
 WorkOrderLookups.hasOne(WorkOrder);
 WorkOrder.belongsTo(WorkOrderLookups);
 
-Task.belongsTo(User);
-Task.belongsTo(WorkOrder);
+Task.belongsTo(User)
+User.hasMany(Task)
+Task.belongsToMany(WorkOrderLookups, { through: TaskItem })
+Task.belongsToMany(User, { through: TaskItem })
 
 sequelize
   .sync()

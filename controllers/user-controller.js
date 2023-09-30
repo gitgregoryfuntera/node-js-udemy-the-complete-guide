@@ -92,7 +92,7 @@ const postDeleteUser = async (req, res, next) => {
 };
 
 const getUserList = async (req, res, next) => {
-  const users = await User.fetchAll();
+  const users = await User.findAll()
   res.render("admin/user-list", {
     docTitle: "User List",
     users: users,
