@@ -2,6 +2,7 @@ const { Op } = require("sequelize");
 const Task = require("../models/task-model");
 const User = require("../models/user-model");
 const WorkOrder = require("../models/work-order-model");
+const TaskItem = require("../models/task-item-model");
 
 const getWorkOrders = async (req, res, next) => {
   const workOrders = await WorkOrder.findAll();
@@ -17,13 +18,7 @@ const getWorkOrders = async (req, res, next) => {
     } = workOrder;
     const user = await User.findByPk(userId);
     const { user: userName, title: userTitle } = user;
-    const availableTasks = await Task.findAll({
-      where: {
-        userId: {
-          [Op.ne]: userId
-        }
-      }
-    })
+    const availableTasks = await  Task.findAll()
     console.log("🚀 ~ file: work-order-controller.js:27 ~ getWorkOrders ~ availableTasks:", availableTasks);
     if (constructedWO?.length === 0) {
       constructedWO.push({

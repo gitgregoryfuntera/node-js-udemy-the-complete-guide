@@ -40,8 +40,8 @@
                         </div>
                       <% }) %>
                     </ul>
-                  <% } else { %>
-                    <p>A task has already been associated to this user.</p>
+                  <% } %>
+                    <p>Create a new Task from this work order.</p>
                     <div>
                       <form action="/task/add" method="POST">
                         <input type="hidden" name="task_id" value=""/>
@@ -51,7 +51,6 @@
                         <button type="submit">Add a new task</button>
                       </form>
                     </div>
-                  <% } %>
                 </div>
               </li>
             <% }) %>

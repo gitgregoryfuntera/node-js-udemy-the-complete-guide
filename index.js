@@ -38,8 +38,6 @@ WorkOrder.belongsTo(User);
 WorkOrderLookups.hasOne(WorkOrder);
 WorkOrder.belongsTo(WorkOrderLookups);
 
-Task.belongsTo(User)
-User.hasMany(Task)
 Task.belongsToMany(WorkOrderLookups, { through: TaskItem })
 Task.belongsToMany(User, { through: TaskItem })
 
