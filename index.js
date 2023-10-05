@@ -38,8 +38,8 @@ WorkOrder.belongsTo(User);
 WorkOrderLookups.hasOne(WorkOrder);
 WorkOrder.belongsTo(WorkOrderLookups);
 
-Task.belongsToMany(WorkOrderLookups, { through: TaskItem })
-Task.belongsToMany(User, { through: TaskItem })
+Task.belongsToMany(WorkOrderLookups, { through: TaskItem });
+Task.belongsToMany(User, { through: TaskItem });
 
 sequelize
   .sync()

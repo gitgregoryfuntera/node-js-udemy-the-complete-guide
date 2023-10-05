@@ -29,7 +29,6 @@ const getUser = async (req, res, next) => {
   } = req;
   try {
     const result = await User.findByPk(userId);
-    console.log("🚀 ~ file: user-controller.js:32 ~ getUser ~ result:", result);
     const workOrderLookups = await WorkOrderLookups.findAll()
     res.render("users/user-details", {
       docTitle: `${result?.user}`,

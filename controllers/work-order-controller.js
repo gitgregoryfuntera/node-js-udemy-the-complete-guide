@@ -19,7 +19,6 @@ const getWorkOrders = async (req, res, next) => {
     const user = await User.findByPk(userId);
     const { user: userName, title: userTitle } = user;
     const availableTasks = await  Task.findAll()
-    console.log("🚀 ~ file: work-order-controller.js:27 ~ getWorkOrders ~ availableTasks:", availableTasks);
     if (constructedWO?.length === 0) {
       constructedWO.push({
         id,

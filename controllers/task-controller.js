@@ -3,7 +3,20 @@ const TaskItem = require("../models/task-item-model");
 
 const getTasks = async (req, res, next) => {
   const tasks = await Task.findAll()
+  const consolidatedTasks = []
 
+  for (let task of tasks) {
+    const taskItemRes = await TaskItem.findAll({
+      where: {
+        taskId: task.id
+      }
+    })
+    consolidatedTasks.push({
+      taskId: task.dataValues?.id,
+      taskItems: taskItemRes
+    })
+  }
+  console.log("🚀 ~ file: task-controller.js:7 ~ getTasks ~ consolidatedTasks:", consolidatedTasks);
   res.render("users/task", {
     tasks,
     docTitle: "Tasks",
